@@ -1,0 +1,33 @@
+# Automatically detect text files and normalize line endings to LF in the repo
+* text=auto eol=lf
+
+# Explicitly enforce LF for source, config, and script files
+*.js text eol=lf
+*.ts text eol=lf
+*.jsx text eol=lf
+*.tsx text eol=lf
+*.json text eol=lf
+*.css text eol=lf
+*.html text eol=lf
+*.sql text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.sh text eol=lf
+
+# Enforce CRLF only if Windows batch scripts require it
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Mark binary files so Git treats them as binary (no text diff/line-ending mangling)
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.pdf binary
+*.zip binary
+
+# Optional: treat lockfiles or generated artifacts as binary in diffs/merges
+package-lock.json binary
