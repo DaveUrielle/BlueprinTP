@@ -1,0 +1,163 @@
+:root {
+  --bg: #f2f4f7;
+  --surface: #ffffff;
+  --ink: #16222e;
+  --muted: #5b6b79;
+  --line: #d9dfe6;
+  --accent: #1f4fd8;
+  --accent-ink: #ffffff;
+  --danger: #c0352b;
+  --ok: #1d7a4a;
+  --side: #14213d;
+  --side-ink: #dfe6f2;
+  font-family: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+/* ---------- Sidebar ---------- */
+.sidebar {
+  background: var(--side);
+  color: var(--side-ink);
+  padding: 28px 16px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+.brand {
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0 0 28px 12px;
+  color: #fff;
+}
+.sidebar nav { display: flex; flex-direction: column; gap: 2px; }
+.sidebar a {
+  color: var(--side-ink);
+  text-decoration: none;
+  padding: 9px 12px;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+.sidebar a:hover { background: rgba(255, 255, 255, 0.08); }
+.sidebar a.active { background: #fff; color: var(--side); font-weight: 600; }
+
+/* ---------- Main ---------- */
+main { padding: 36px 44px 60px; max-width: 980px; width: 100%; }
+.view[hidden] { display: none; }
+
+.view-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+h2 { font-size: 1.6rem; font-weight: 600; margin: 0; }
+h3 { font-size: 1.05rem; font-weight: 600; margin: 32px 0 10px; }
+
+/* ---------- Stats ---------- */
+.stats { display: flex; gap: 14px; margin-bottom: 8px; flex-wrap: wrap; }
+.stat {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 14px 22px;
+  min-width: 140px;
+  display: flex;
+  flex-direction: column;
+}
+.stat-num { font-size: 2rem; font-weight: 600; line-height: 1.1; }
+.stat-label { color: var(--muted); font-size: 0.9rem; }
+
+/* ---------- Tables ---------- */
+.table-wrap {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow-x: auto;
+}
+table { width: 100%; border-collapse: collapse; font-size: 0.93rem; }
+th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+th { font-weight: 600; color: var(--muted); background: #f8f9fb; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:hover:not(.empty) { background: #f6f8fc; }
+tr.empty td { color: var(--muted); text-align: center; padding: 22px; }
+
+/* ---------- Forms ---------- */
+form {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 26px;
+  max-width: 520px;
+}
+.field { margin-bottom: 18px; }
+label { display: block; font-weight: 500; margin-bottom: 6px; font-size: 0.93rem; }
+input, textarea {
+  width: 100%;
+  font: inherit;
+  padding: 9px 11px;
+  border: 1px solid #b9c3ce;
+  border-radius: 6px;
+  background: #fff;
+  color: var(--ink);
+}
+textarea { resize: vertical; }
+input:focus-visible, textarea:focus-visible, .btn:focus-visible, .sidebar a:focus-visible {
+  outline: 3px solid rgba(31, 79, 216, 0.4);
+  outline-offset: 1px;
+}
+input.invalid, textarea.invalid { border-color: var(--danger); }
+.hint { margin: 5px 0 0; font-size: 0.83rem; color: var(--muted); }
+
+.actions { display: flex; gap: 10px; margin-top: 6px; }
+
+/* ---------- Buttons ---------- */
+.btn {
+  font: inherit;
+  font-weight: 500;
+  padding: 9px 18px;
+  border-radius: 6px;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: var(--accent-ink);
+  cursor: pointer;
+}
+.btn:hover { filter: brightness(1.08); }
+.btn.secondary { background: transparent; color: var(--accent); border-color: #b9c3ce; }
+.btn.secondary:hover { background: #eef2fb; filter: none; }
+.btn.danger { background: var(--danger); border-color: var(--danger); }
+
+/* ---------- Status messages ----------
+   In your JS:  el.textContent = "...";  el.className = "msg success";  (or "msg error")
+   Clear with:  el.textContent = "";     el.className = "msg";           */
+.msg { margin-top: 16px; font-size: 0.93rem; }
+.msg:empty { display: none; }
+.msg.success, .msg.error {
+  padding: 10px 14px;
+  border-radius: 6px;
+  border: 1px solid;
+}
+.msg.success { color: var(--ok); background: #eaf6ef; border-color: #b7dcc7; }
+.msg.error { color: var(--danger); background: #fbecea; border-color: #f0c2bd; }
+
+/* ---------- Mobile ---------- */
+@media (max-width: 760px) {
+  body { grid-template-columns: 1fr; }
+  .sidebar { position: static; height: auto; padding: 14px 12px; }
+  .brand { margin: 0 0 10px 4px; font-size: 1.05rem; }
+  .brand br { display: none; }
+  .sidebar nav { flex-direction: row; overflow-x: auto; gap: 4px; }
+  .sidebar a { white-space: nowrap; }
+  main { padding: 22px 16px 48px; }
+}

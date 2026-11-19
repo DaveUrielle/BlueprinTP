@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Student Management System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <aside class="sidebar">
+    <h1 class="brand">Student<br />Management</h1>
+    <nav aria-label="Main">
+      <a href="#dashboard" data-nav="dashboard">Dashboard</a>
+
+      <!-- TEAMMATES: add your nav link below, one line each.
+           The data-nav value and href must match your section's id.
+      <a href="#create-student" data-nav="create-student">Create student</a>
+      -->
+    </nav>
+  </aside>
+
+  <main>
+
+    <!-- ============ DASHBOARD (RETRIEVE) ============ -->
+    <section id="dashboard" class="view" aria-labelledby="h-dashboard">
+      <header class="view-head">
+        <h2 id="h-dashboard">Dashboard</h2>
+        <button type="button" id="refreshBtn" class="btn secondary">Refresh</button>
+      </header>
+
+      <div class="stats">
+        <div class="stat"><span class="stat-num" id="statStudents">0</span><span class="stat-label">Students</span></div>
+        <div class="stat"><span class="stat-num" id="statCourses">0</span><span class="stat-label">Courses</span></div>
+        <div class="stat"><span class="stat-num" id="statEnrolments">0</span><span class="stat-label">Enrolments</span></div>
+      </div>
+
+      <div id="dashboardMsg" class="msg" role="status" aria-live="polite"></div>
+
+      <h3>Students</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>ID</th><th>Name</th><th>Email</th><th>Course</th><th>Year</th></tr>
+          </thead>
+          <tbody id="studentTableBody">
+            <tr class="empty"><td colspan="5">No students yet.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Courses</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Code</th><th>Name</th><th>Enrolled / Capacity</th><th>Description</th></tr>
+          </thead>
+          <tbody id="courseTableBody">
+            <tr class="empty"><td colspan="4">No courses yet.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- TEAMMATES: add your section below. Copy this template, change the ids.
+         Sections are shown/hidden automatically based on the URL hash.
+
+    <section id="create-student" class="view" aria-labelledby="h-create-student">
+      <header class="view-head"><h2 id="h-create-student">Create student</h2></header>
+      <form id="createStudentForm" novalidate>
+        <div class="field">
+          <label for="createStudentId">Student ID</label>
+          <input type="text" id="createStudentId" name="id" required />
+        </div>
+        <div class="actions">
+          <button type="submit" class="btn">Create student</button>
+        </div>
+        <div id="createStudentMsg" class="msg" role="status" aria-live="polite"></div>
+      </form>
+    </section>
+    -->
+
+  </main>
+
+  <!-- Tab switching (shared). Works for any <section class="view"> + <a data-nav> pair. -->
+  <script>
+    (function () {
+      var views = document.querySelectorAll('.view');
+      var links = document.querySelectorAll('[data-nav]');
+      function show() {
+        var id = location.hash.replace('#', '') || 'dashboard';
+        if (!document.getElementById(id)) id = 'dashboard';
+        views.forEach(function (v) { v.hidden = v.id !== id; });
+        links.forEach(function (a) {
+          a.classList.toggle('active', a.dataset.nav === id);
+          if (a.dataset.nav === id) a.setAttribute('aria-current', 'page');
+          else a.removeAttribute('aria-current');
+        });
+      }
+      window.addEventListener('hashchange', show);
+      show();
+    })();
+  </script>
+
+  <!-- Each member adds their own frontend file here, one line each, e.g.:
+  <script src="js/john-tan.js"></script>
+  -->
+</body>
+</html>
