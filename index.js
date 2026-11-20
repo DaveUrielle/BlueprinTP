@@ -3,6 +3,10 @@ var bodyParser = require("body-parser");
 var app = express();
 
 const { enrollStudent } = require('./utils/Mohamed_Asraf_EnrollStudentUtil');
+const { viewDashboard, editRecord } = require('./utils/DaveUrielleUnabiaUtil');
+app.get('/view-dashboard', viewDashboard);
+app.put('/edit-record/:id', editRecord);
+app.post('/enroll', enrollStudent);
 
 const PORT = process.env.PORT || 5050;
 var startPage = "index.html";
