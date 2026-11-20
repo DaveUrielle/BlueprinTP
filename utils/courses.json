@@ -4,5 +4,12 @@
     "name": "Diploma in Information Technology",
     "description": "Core IT diploma",
     "capacity": 1
+  },
+  {
+    "code": "DIP",
+    "name": "data analytics",
+    "maxCapacity": 30,
+    "enrolledStudents": [],
+    "description": "big data"
   }
 ]

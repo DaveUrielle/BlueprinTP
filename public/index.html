@@ -15,7 +15,10 @@
     <h1 class="brand">Student<br />Management</h1>
     <nav aria-label="Main">
       <a href="#dashboard" data-nav="dashboard">Dashboard</a>
+      <a href="#create-student" data-nav="create-student">Create Student</a>
       <a href="#enroll-student" data-nav="enroll-student">Enrol student to course</a>
+      <a href="#create-course" data-nav="create-course">Create Course</a>
+
 
       <!-- TEAMMATES: add your nav link below, one line each.
            The data-nav value and href must match your section's id.
@@ -66,6 +69,110 @@
       </div>
     </section>
 
+
+    <section id="create-student" class="view" aria-labelledby="h-create-student">
+
+        <header class="view-head">
+            <h2 id="h-create-student">Create Student Record</h2>
+        </header>
+
+        <form id="createStudentForm">
+
+            <div class="field">
+                <label for="name">Name</label>
+                <input type="text" id="name" required>
+            </div>
+
+            <div class="field">
+                <label for="email">Email</label>
+                <input type="email" id="email" required>
+            </div>
+
+            <div class="field">
+                <label for="year">Year</label>
+                <select id="year" required>
+                    <option value="">Select Year</option>
+                    <option value="1">Year 1</option>
+                    <option value="2">Year 2</option>
+                    <option value="3">Year 3</option>
+                </select>
+            </div>
+
+            <p>Course: Not Assigned</p>
+
+            <div class="actions">
+                <button type="submit" class="btn">Create Student</button>
+            </div>
+
+            <div id="message" class="msg" role="status"></div>
+
+        </form>
+    </section>
+
+<!-- ============ CREATE COURSE (RASHID) ============ -->
+    <section id="create-course" class="view" aria-labelledby="h-create-course">
+
+      <header class="view-head">
+        <h2 id="h-create-course">Create Course</h2>
+      </header>
+
+      <form id="createCourseForm">
+
+        <div class="field">
+          <label for="courseCode">Course Code</label>
+          <input
+            type="text"
+            id="courseCode"
+            placeholder="e.g. CICT2026"
+            required
+          />
+        </div>
+
+        <div class="field">
+          <label for="courseName">Course Name</label>
+          <input
+            type="text"
+            id="courseName"
+            placeholder="Enter course name"
+            required
+          />
+        </div>
+
+        <div class="field">
+          <label for="maxCapacity">Maximum Capacity</label>
+          <input
+            type="number"
+            id="maxCapacity"
+            min="1"
+            step="1"
+            placeholder="e.g. 30"
+            required
+          />
+        </div>
+
+        <div class="field">
+          <label for="courseDescription">Description</label>
+          <textarea
+            id="courseDescription"
+            placeholder="Enter course description"
+            rows="4"
+            required
+          ></textarea>
+        </div>
+
+        <p>Enrolled Students: 0</p>
+
+        <div class="actions">
+          <button type="submit" class="btn">Create Course</button>
+        </div>
+
+        <div id="courseMessage" class="msg" role="status" aria-live="polite"></div>
+
+      </form>
+    </section>
+
+
+
     <!-- ============ ENROL STUDENT ============ -->
     <section id="enroll-student" class="view" aria-labelledby="h-enroll-student">
       <header class="view-head"><h2 id="h-enroll-student">Enrol student</h2></header>
@@ -86,26 +193,9 @@
       </form>
     </section>
 
-    <!-- TEAMMATES: add your section below. Copy this template, change the ids.
-         Sections are shown/hidden automatically based on the URL hash.
 
-    <section id="create-student" class="view" aria-labelledby="h-create-student">
-      <header class="view-head"><h2 id="h-create-student">Create student</h2></header>
-      <form id="createStudentForm" novalidate>
-        <div class="field">
-          <label for="createStudentId">Student ID</label>
-          <input type="text" id="createStudentId" name="id" required />
-        </div>
-        <div class="actions">
-          <button type="submit" class="btn">Create student</button>
-        </div>
-        <div id="createStudentMsg" class="msg" role="status" aria-live="polite"></div>
-      </form>
-    </section>
-    -->
 
   </main>
-
   <!-- Tab switching (shared). Works for any <section class="view"> + <a data-nav> pair. -->
   <script>
     (function () {
@@ -125,7 +215,10 @@
       show();
     })();
   </script>
-  <script src="js/DaveUrielleUnabia.js"></script>
-  <script src="js/Mohamed_Asraf_enroll-student.js"></script>
+
+<script src="js/createrecordrashid.js"></script>
+ <script src="js/createcourserashid.js"></script>
+<script src="js/DaveUrielleUnabia.js"></script>
+<script src="js/Mohammed_Asraf_enroll-student.js"></script>
 </body>
 </html>
