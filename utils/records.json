@@ -1,3 +1,4 @@
+
 [
   {
     "name": "Test Student",
@@ -5,5 +6,21 @@
     "year": 2,
     "course": null,
     "id": "1795154544928965"
+  },
+  {
+    "id": "1234567A",
+    "name": "Alice Tan",
+    "email": "alice.tan@student.school.edu.sg",
+    "course": "Information Technology",
+    "year": 1,
+    "courses": []
+  },
+  {
+    "id": "7654321B",
+    "name": "Ben Lim",
+    "email": "ben.lim@student.school.edu.sg",
+    "course": "Cybersecurity",
+    "year": 2,
+    "courses": []
   }
 ]

@@ -16,8 +16,8 @@
     <nav aria-label="Main">
       <a href="#dashboard" data-nav="dashboard">Dashboard</a>
       <a href="#create-student" data-nav="create-student">Create Student</a>
+      <a href="#enroll-student" data-nav="enroll-student">Enrol student to course</a>
 
-      
 
       <!-- TEAMMATES: add your nav link below, one line each.
            The data-nav value and href must match your section's id.
@@ -68,45 +68,66 @@
       </div>
     </section>
 
-    
-<section id="create-student" class="view" aria-labelledby="h-create-student">
 
-    <header class="view-head">
-        <h2 id="h-create-student">Create Student Record</h2>
-    </header>
+    <section id="create-student" class="view" aria-labelledby="h-create-student">
 
-    <form id="createStudentForm">
+        <header class="view-head">
+            <h2 id="h-create-student">Create Student Record</h2>
+        </header>
 
+        <form id="createStudentForm">
+
+            <div class="field">
+                <label for="name">Name</label>
+                <input type="text" id="name" required>
+            </div>
+
+            <div class="field">
+                <label for="email">Email</label>
+                <input type="email" id="email" required>
+            </div>
+
+            <div class="field">
+                <label for="year">Year</label>
+                <select id="year" required>
+                    <option value="">Select Year</option>
+                    <option value="1">Year 1</option>
+                    <option value="2">Year 2</option>
+                    <option value="3">Year 3</option>
+                </select>
+            </div>
+
+            <p>Course: Not Assigned</p>
+
+            <div class="actions">
+                <button type="submit" class="btn">Create Student</button>
+            </div>
+
+            <div id="message" class="msg" role="status"></div>
+
+        </form>
+    </section>
+
+    <!-- ============ ENROL STUDENT ============ -->
+    <section id="enroll-student" class="view" aria-labelledby="h-enroll-student">
+      <header class="view-head"><h2 id="h-enroll-student">Enrol student</h2></header>
+      <form id="enrollStudentForm" novalidate>
         <div class="field">
-            <label for="name">Name</label>
-            <input type="text" id="name" required>
+          <label for="enrollStudentId">Student ID</label>
+          <input type="text" id="enrollStudentId" name="studentId" maxlength="8" autocomplete="off" required />
+          <p class="hint">7 digits followed by a capital letter, e.g. 1234567A</p>
         </div>
-
         <div class="field">
-            <label for="email">Email</label>
-            <input type="email" id="email" required>
+          <label for="enrollCourseCode">Course code</label>
+          <input type="text" id="enrollCourseCode" name="courseCode" maxlength="10" autocomplete="off" required />
         </div>
-
-        <div class="field">
-            <label for="year">Year</label>
-            <select id="year" required>
-                <option value="">Select Year</option>
-                <option value="1">Year 1</option>
-                <option value="2">Year 2</option>
-                <option value="3">Year 3</option>
-            </select>
-        </div>
-
-        <p>Course: Not Assigned</p>
-
         <div class="actions">
-            <button type="submit" class="btn">Create Student</button>
+          <button type="submit" class="btn">Enrol student</button>
         </div>
+        <div id="enrollStudentMsg" class="msg" role="status" aria-live="polite"></div>
+      </form>
+    </section>
 
-        <div id="message" class="msg" role="status"></div>
-
-    </form>
-</section>
 
 
   </main>
@@ -130,7 +151,8 @@
     })();
   </script>
 
-  <script src="js/createrecordrashid.js"></script>
-  <script src="js/DaveUrielleUnabia.js"></script>
+<script src="js/createrecordrashid.js"></script>
+<script src="js/DaveUrielleUnabia.js"></script>
+<script src="js/enroll-student.js"></script>
 </body>
-</html>
+</html> 
