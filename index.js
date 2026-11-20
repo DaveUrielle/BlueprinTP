@@ -2,12 +2,6 @@ var express = require('express');
 var bodyParser = require("body-parser");
 var app = express();
 
-const { enrollStudent } = require('./utils/Mohamed_Asraf_EnrollStudentUtil');
-const { viewDashboard, editRecord } = require('./utils/DaveUrielleUnabiaUtil');
-app.get('/view-dashboard', viewDashboard);
-app.put('/edit-record/:id', editRecord);
-app.post('/enroll', enrollStudent);
-
 const PORT = process.env.PORT || 5050;
 var startPage = "index.html";
 
@@ -15,11 +9,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static("./public"));
 
+const { enrollStudent } = require('./utils/Mohamed_Asraf_EnrollStudentUtil');
+app.post('/enroll', enrollStudent);
+
 const { addRecord } = require('./utils/AddRecordUtilRashid')
 app.post('/add-record', addRecord);
 
-const { viewDashboard } = require('./utils/DaveUrielleUnabiaUtil')
+const { viewDashboard, editRecord } = require('./utils/DaveUrielleUnabiaUtil');
 app.get('/view-dashboard', viewDashboard);
+app.put('/edit-record/:id', editRecord);
 
 const { addCourse } = require('./utils/CreateCourseUtilrashid');
 app.post('/add-course', addCourse);
