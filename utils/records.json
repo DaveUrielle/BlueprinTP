@@ -1,1 +1,9 @@
-[]
+[
+  {
+    "name": "Test Student",
+    "email": "teststudent@gmail.com",
+    "year": 2,
+    "course": null,
+    "id": "1795154544928965"
+  }
+]

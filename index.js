@@ -12,6 +12,9 @@ app.use(express.static("./public"));
 const { addRecord } = require('./utils/AddRecordUtilRashid')
 app.post('/add-record', addRecord);
 
+const { viewDashboard } = require('./utils/DaveUrielleUnabiaUtil')
+app.get('/view-dashboard', viewDashboard);
+
 app.get('/', (req, res) => {
     res.sendFile(__dirname + "/public/" + startPage);
 })
