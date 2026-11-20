@@ -70,14 +70,19 @@
     const tr = document.createElement('tr');
     ['id', 'name', 'email', 'course', 'year'].forEach((k) => tr.appendChild(cell(get(s, k))));
 
+    tr.dataset.studentId = id; // lets other features (e.g. Delete) find which student a row belongs to
+
     const actions = document.createElement('td');
+    const wrap = document.createElement('div');
+    wrap.className = 'row-actions'; // other features can append their own buttons in here
     const editBtn = document.createElement('button');
     editBtn.type = 'button';
     editBtn.className = 'btn secondary small';
     editBtn.textContent = 'Edit';
     editBtn.setAttribute('aria-label', `Edit ${get(s, 'name') || id}`);
     editBtn.addEventListener('click', () => startEdit(id));
-    actions.appendChild(editBtn);
+    wrap.appendChild(editBtn);
+    actions.appendChild(wrap);
     tr.appendChild(actions);
     return tr;
   }
@@ -92,6 +97,7 @@
     const id = get(s, 'id');
     const tr = document.createElement('tr');
     tr.className = 'editing';
+    tr.dataset.studentId = id;
 
     const name = document.createElement('input');
     name.type = 'text';
@@ -167,11 +173,13 @@
     body.replaceChildren();
     if (students.length === 0) {
       body.appendChild(emptyRow(COLS, 'No students yet.'));
-      return;
+    } else {
+      students.forEach((s) => {
+        body.appendChild(editingId !== null && get(s, 'id') === editingId ? buildEditRow(s) : buildViewRow(s));
+      });
     }
-    students.forEach((s) => {
-      body.appendChild(editingId !== null && get(s, 'id') === editingId ? buildEditRow(s) : buildViewRow(s));
-    });
+    // Hook for other features: fires every time the student table is (re)drawn.
+    document.dispatchEvent(new CustomEvent('students-rendered', { detail: { students } }));
   }
 
   function renderCourses(courses) {
