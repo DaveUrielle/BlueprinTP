@@ -15,6 +15,7 @@
     <h1 class="brand">Student<br />Management</h1>
     <nav aria-label="Main">
       <a href="#dashboard" data-nav="dashboard">Dashboard</a>
+      <a href="#enroll-student" data-nav="enroll-student">Enrol student to course</a>
 
       <!-- TEAMMATES: add your nav link below, one line each.
            The data-nav value and href must match your section's id.
@@ -65,6 +66,26 @@
       </div>
     </section>
 
+    <!-- ============ ENROL STUDENT ============ -->
+    <section id="enroll-student" class="view" aria-labelledby="h-enroll-student">
+      <header class="view-head"><h2 id="h-enroll-student">Enrol student</h2></header>
+      <form id="enrollStudentForm" novalidate>
+        <div class="field">
+          <label for="enrollStudentId">Student ID</label>
+          <input type="text" id="enrollStudentId" name="studentId" maxlength="8" autocomplete="off" required />
+          <p class="hint">7 digits followed by a capital letter, e.g. 1234567A</p>
+        </div>
+        <div class="field">
+          <label for="enrollCourseCode">Course code</label>
+          <input type="text" id="enrollCourseCode" name="courseCode" maxlength="10" autocomplete="off" required />
+        </div>
+        <div class="actions">
+          <button type="submit" class="btn">Enrol student</button>
+        </div>
+        <div id="enrollStudentMsg" class="msg" role="status" aria-live="polite"></div>
+      </form>
+    </section>
+
     <!-- TEAMMATES: add your section below. Copy this template, change the ids.
          Sections are shown/hidden automatically based on the URL hash.
 
@@ -108,5 +129,6 @@
   <!-- Each member adds their own frontend file here, one line each, e.g.:
   <script src="js/john-tan.js"></script>
   -->
+  <script src="js/enroll-student.js"></script>
 </body>
-</html>
+</html> 
