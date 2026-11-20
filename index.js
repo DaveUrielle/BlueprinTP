@@ -12,6 +12,9 @@ app.use(express.static("./public"));
 const { enrollStudent } = require('./utils/Mohamed_Asraf_EnrollStudentUtil');
 app.post('/enroll', enrollStudent);
 
+const { deleteStudent } = require('./utils/Mohamed_Asraf_DeleteStudentUtil');
+app.delete('/delete-record/:id', deleteStudent);
+
 const { addRecord } = require('./utils/AddRecordUtilRashid')
 app.post('/add-record', addRecord);
 
