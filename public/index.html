@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
+  <a href="#create-student" data-nav="create-student">Create Student</a>
 </head>
 <body>
 
@@ -65,23 +66,46 @@
       </div>
     </section>
 
-    <!-- TEAMMATES: add your section below. Copy this template, change the ids.
-         Sections are shown/hidden automatically based on the URL hash.
+    
+<section id="create-student" class="view" aria-labelledby="h-create-student">
 
-    <section id="create-student" class="view" aria-labelledby="h-create-student">
-      <header class="view-head"><h2 id="h-create-student">Create student</h2></header>
-      <form id="createStudentForm" novalidate>
+    <header class="view-head">
+        <h2 id="h-create-student">Create Student Record</h2>
+    </header>
+
+    <form id="createStudentForm">
+
         <div class="field">
-          <label for="createStudentId">Student ID</label>
-          <input type="text" id="createStudentId" name="id" required />
+            <label for="name">Name</label>
+            <input type="text" id="name" required>
         </div>
+
+        <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" required>
+        </div>
+
+        <div class="field">
+            <label for="year">Year</label>
+            <select id="year" required>
+                <option value="">Select Year</option>
+                <option value="1">Year 1</option>
+                <option value="2">Year 2</option>
+                <option value="3">Year 3</option>
+            </select>
+        </div>
+
+        <p>Course: Not Assigned</p>
+
         <div class="actions">
-          <button type="submit" class="btn">Create student</button>
+            <button type="submit" class="btn">Create Student</button>
         </div>
-        <div id="createStudentMsg" class="msg" role="status" aria-live="polite"></div>
-      </form>
-    </section>
-    -->
+
+        <div id="message" class="msg" role="status"></div>
+
+    </form>
+</section>
+
 
   </main>
 
@@ -105,6 +129,7 @@
     })();
   </script>
 
+<script src="js/createrecordrashid.js"></script>
   <!-- Each member adds their own frontend file here, one line each, e.g.:
   <script src="js/john-tan.js"></script>
   -->
