@@ -12,7 +12,9 @@
     "code": "DIT",
     "name": "Information Technology",
     "maxCapacity": 50,
-    "enrolledStudents": [],
+    "enrolledStudents": [
+      "8964204B"
+    ],
     "description": "coding"
   }
 ]

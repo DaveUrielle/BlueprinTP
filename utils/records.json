@@ -12,5 +12,12 @@
     "email": "ben.lim@student.school.edu.sg",
     "course": null,
     "year": 2
+  },
+  {
+    "name": "Alex Teo",
+    "email": "alex.teo@student.school.edu.sg",
+    "year": 1,
+    "course": "Information Technology",
+    "id": "8964204B"
   }
 ]
