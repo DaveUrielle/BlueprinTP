@@ -2,6 +2,7 @@
 const { Course } = require('../models/courserashid');
 const fs = require('fs').promises;
 const path = require('path');
+const COURSE_CODE_REGEX = /^[A-Z0-9-]{2,10}$/;
 
 const COURSES_FILE = path.join(__dirname, 'courses.json');
 const TEMPLATE_FILE = path.join(__dirname, 'courses.template.json');
@@ -22,6 +23,12 @@ async function addCourse(req, res) {
                 message: 'Please fill in all required fields.'
             });
         }
+
+        if (!COURSE_CODE_REGEX.test(courseCode)) {
+    return res.status(400).json({
+        message: 'Course code must be 2-10 characters (uppercase letters, numbers or hyphens).'
+    });
+}
 
         // Check maximum capacity
         if (!Number.isInteger(capacity) || capacity <= 0) {

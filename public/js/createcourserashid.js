@@ -8,12 +8,18 @@ document.getElementById('createCourseForm').addEventListener('submit', async fun
     const maxCapacity = Number(capacityInput);
     const description = document.getElementById('courseDescription').value.trim();
     const message = document.getElementById('courseMessage');
+    const COURSE_CODE_REGEX = /^[A-Z0-9-]{2,10}$/;
 
     // Frontend validation
     if (!code || !name || !description) {
         message.textContent = 'Please fill in all required fields.';
         return;
     }
+
+    if (!COURSE_CODE_REGEX.test(code)) {
+    message.textContent = 'Course code must be 2-10 characters (uppercase letters, numbers or hyphens).';
+    return;
+}
 
     if (capacityInput === '' || !Number.isInteger(maxCapacity) || maxCapacity <= 0) {
         message.textContent = 'Maximum capacity must be a positive whole number.';
