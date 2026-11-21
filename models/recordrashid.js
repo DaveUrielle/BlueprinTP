@@ -1,3 +1,4 @@
+
 class Record {
     constructor(name, email, year, course = null) {
         this.name = name;
@@ -5,11 +6,13 @@ class Record {
         this.year = year;
         this.course = course;
 
-        const timestamp = new Date().getTime();
-        const random = Math.floor(Math.random() * 1000);
+        const number = Math.floor(1000000 + Math.random() * 9000000);
 
-        this.id = timestamp + "" + random.toString().padStart(3, '0');
+        const letter = String.fromCharCode(65 + Math.floor(Math.random() * 26));
+
+        this.id = String(number) + letter;
     }
 }
 
 module.exports = { Record };
+

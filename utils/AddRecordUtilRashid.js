@@ -62,13 +62,20 @@ async function addRecord(req, res) {
             });
         }
 
-        // Create new student without an assigned course
-        const newRecord = new Record(
-            studentName,
-            studentEmail,
-            studentYear,
-            null
-        );
+
+        
+let newRecord;
+
+// Generate a new ID if it already exists
+do {
+    newRecord = new Record(
+        studentName,
+        studentEmail,
+        studentYear,
+        null
+    );
+} while (records.some(student => student.id === newRecord.id));
+
 
         // Add new student and save to JSON
         records.push(newRecord);
