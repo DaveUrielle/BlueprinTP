@@ -14,5 +14,12 @@
     "maxCapacity": 50,
     "enrolledStudents": [],
     "description": "coding"
+  },
+  {
+    "code": "DBU",
+    "name": "Business Management",
+    "maxCapacity": 50,
+    "enrolledStudents": [],
+    "description": "Business offers a dynamic and future oriented curriculum designed to cater to the evolving demands of industries"
   }
 ]

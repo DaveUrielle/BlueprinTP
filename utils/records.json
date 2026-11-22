@@ -5,6 +5,8 @@
     "email": "alice.tan@student.school.edu.sg",
     "course": "data analytics",
     "year": 1
+<<<<<<< HEAD
+=======
   },
   {
     "id": "7654321B",
@@ -12,5 +14,13 @@
     "email": "ben.lim@student.school.edu.sg",
     "course": null,
     "year": 2
+  },
+  {
+    "name": "Bryan Wong",
+    "email": "bryan.wong@student.school.edu.sg",
+    "year": 1,
+    "course": null,
+    "id": "7494079G"
+>>>>>>> 83388301110e8e9e087dfd0f0a66c2b9d4de19ab
   }
 ]
