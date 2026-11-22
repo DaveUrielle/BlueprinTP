@@ -1,0 +1,20 @@
+#!/bin/sh
+
+echo "Running pre-commit checks..."
+
+FILES=$(git diff --cached --name-only --diff-filter=ACM | grep '\.js$')
+
+for FILE in $FILES
+do
+    echo "Checking $FILE..."
+
+    node --check "$FILE"
+
+    if [ $? -ne 0 ]; then
+        echo "Commit blocked: JavaScript syntax error found."
+        exit 1
+    fi
+done
+
+echo "All checks passed. Commit allowed."
+exit 0
