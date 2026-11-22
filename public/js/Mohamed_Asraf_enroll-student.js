@@ -64,7 +64,7 @@
       var res = await fetch('/enroll', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ studentId: studentId, courseCode: courseCode }),
+        body: JSON.stringify({ studentId: studentId, courseCode: courseCode },
       });
       var data = await res.json();
 
