@@ -10,7 +10,7 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const YEAR_MIN = 1;                                
 const YEAR_MAX = 3;
 const TEXT_MAX = 100;
-const EDITABLE_FIELDS = ['name', 'email', 'course', 'year']; 
+const EDITABLE_FIELDS = ['name', 'email', 'year']; // course is NOT editable: it only changes via enrolment
 
 async function readJSON(filename) {
   try {
@@ -50,13 +50,6 @@ function validateEdits(body) {
     else clean.email = v;
   }
 
-  if (body.course !== undefined) {
-    const v = typeof body.course === 'string' ? body.course.trim() : '';
-    if (!v) errors.push('Course is required.');
-    else if (v.length > TEXT_MAX) errors.push(`Course must be ${TEXT_MAX} characters or fewer.`);
-    else clean.course = v;
-  }
-
   if (body.year !== undefined) {
     const raw = body.year;
     const n = typeof raw === 'string' ? (raw.trim() === '' ? NaN : Number(raw)) : raw;
@@ -85,6 +78,12 @@ async function editRecord(req, res) {
       return res.status(400).json({ message: 'Student ID cannot be changed.' });
     }
 
+    if (body.course !== undefined) {
+      return res.status(400).json({
+        message: 'Course cannot be edited. A student\'s course only changes when they are enrolled in a course.',
+      });
+    }
+
     const students = await readJSON(RECORDS_FILE);
     const student = students.find((s) => String(s.id).toUpperCase() === id);
     if (!student) {
@@ -102,7 +101,7 @@ async function editRecord(req, res) {
       return res.status(400).json({ message: errors.join(' '), errors });
     }
 
-    Object.assign(student, clean); // leaves id and the enrolled "courses" list untouched
+    Object.assign(student, clean); // leaves id and course untouched (course is set only by enrolment)
     await fs.writeFile(RECORDS_FILE, JSON.stringify(students, null, 2));
 
     return res.status(200).json({ message: 'Student record updated successfully.', student });

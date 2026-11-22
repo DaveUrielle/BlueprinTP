@@ -110,12 +110,6 @@
     email.value = get(s, 'email') ?? '';
     email.setAttribute('aria-label', 'Email');
 
-    const course = document.createElement('input');
-    course.type = 'text';
-    course.maxLength = TEXT_MAX;
-    course.value = get(s, 'course') ?? '';
-    course.setAttribute('aria-label', 'Course');
-
     const year = document.createElement('select');
     year.setAttribute('aria-label', 'Year');
     YEAR_OPTIONS.forEach((y) => {
@@ -126,7 +120,7 @@
     });
     year.value = String(get(s, 'year'));
 
-    const fields = { name, email, course, year };
+    const fields = { name, email, year };
     name.dataset.editField = 'name';
 
     const saveBtn = document.createElement('button');
@@ -155,7 +149,7 @@
     tr.appendChild(cell(id)); // ID is the record's key, so it is shown but not editable
     tr.appendChild(inputCell(name));
     tr.appendChild(inputCell(email));
-    tr.appendChild(inputCell(course));
+    tr.appendChild(cell(get(s, 'course'))); // course is read-only here: it only changes through enrolment
     tr.appendChild(inputCell(year));
 
     const actions = document.createElement('td');
@@ -230,9 +224,6 @@
     if (!values.email) problems.email = 'Email is required.';
     else if (!EMAIL_REGEX.test(values.email)) problems.email = 'Email format is invalid.';
 
-    if (!values.course) problems.course = 'Course is required.';
-    else if (values.course.length > TEXT_MAX) problems.course = `Course must be ${TEXT_MAX} characters or fewer.`;
-
     if (!YEAR_OPTIONS.includes(values.year)) problems.year = 'Please choose a valid year.';
     return problems;
   }
@@ -244,7 +235,6 @@
     const values = {
       name: fields.name.value.trim(),
       email: fields.email.value.trim(),
-      course: fields.course.value.trim(),
       year: Number(fields.year.value),
     };
 
