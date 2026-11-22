@@ -12,9 +12,14 @@
     "code": "DIT",
     "name": "Information Technology",
     "maxCapacity": 50,
-    "enrolledStudents": [
-      "8964204B"
-    ],
+    "enrolledStudents": [],
     "description": "coding"
+  },
+  {
+    "code": "DBU",
+    "name": "Business Management",
+    "maxCapacity": 50,
+    "enrolledStudents": [],
+    "description": "Business offers a dynamic and future oriented curriculum designed to cater to the evolving demands of industries"
   }
 ]
