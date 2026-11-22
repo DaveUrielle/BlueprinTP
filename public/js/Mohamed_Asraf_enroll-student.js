@@ -76,7 +76,7 @@
       }
     } catch (err) {
       showMessage('Could not reach the server.', true);
-    }
+    
   });
 })();
   function clearMessage() {
